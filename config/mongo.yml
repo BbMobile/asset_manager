@@ -4,15 +4,13 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: asset_manager_development
+  database: asset_manager
 
 test:
   <<: *defaults
-  database: asset_manager_test
+  database: asset_manager
 
 # set these environment variables on your prod server
 production:
   <<: *defaults
   database: asset_manager
-  username: <%= ENV['MONGO_USERNAME'] %>
-  password: <%= ENV['MONGO_PASSWORD'] %>

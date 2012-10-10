@@ -206,7 +206,7 @@ module AssetsHelper
                                           :field_id => field.id,
                                           :field_name_value => {field.name.downcase.gsub(" ","_") =>option.id} ,
                                           :text_value => option.option,
-                                          :locked => true)
+                                          :locked => false)
                 when 'RS Operating System'
                   option = field.field_option.detect {|c|c.option == serverDetails.image.name}
                   if option == nil
@@ -243,6 +243,32 @@ module AssetsHelper
       end
 
     end
+  end
+
+  def sync_assets(params)
+    cloud_vendor = CloudVendor.find(params[:vendor_creds])
+
+    if CloudVendorType.find(cloud_vendor.cloud_vendor_type).vendor_name == "Rackspace Cloud"
+      begin
+        cs = CloudServers::Connection.new(:username => cloud_vendor.username, :api_key => cloud_vendor.api_key)
+        assets_to_delete = Array.new
+
+        Asset.where(:asset_type_id =>params[:asset_type_id]).each do |asset|
+          begin cs.server(asset.vendor_server_id)
+          assets_to_delete.push(asset.id)
+          rescue
+          end
+        end
+
+        assets_to_delete.each do |asset|
+          Asset.destroy(asset)
+        end
+
+      rescue
+      end
+
+    end
+
   end
 
   def update_existing_asset_rs(field,serverDetails,asset)

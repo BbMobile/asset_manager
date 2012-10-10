@@ -73,7 +73,9 @@ module AssetsHelper
   def updateFieldValue(params,fieldObj,fieldValue,asset)
     case params[fieldObj.name][fieldObj.name+'_type']
       when 'single_option'
-        asset.field_value.select { |b| b.field_id == fieldObj.id }.each { |b|  b.field_option_id = fieldObj.field_option.find(BSON::ObjectId.from_string(params[fieldObj.name][fieldObj.name]  )).id}
+        options = Array.new
+        options.push(params[fieldObj.name][fieldObj.name])
+        asset.field_value.select { |b| b.field_id == fieldObj.id }.each { |b|  b.field_option_id = options}
         asset.field_value.select {|b| b.field_id == fieldObj.id}.each {|b| b.text_value = fieldObj.field_option.find(BSON::ObjectId.from_string(params[fieldObj.name][fieldObj.name]  )).option}
         asset.field_value.select { |b| b.field_id == fieldObj.id }.each { |b| b.field_name_value = {fieldObj.name.downcase.gsub(" ","_") => params[fieldObj.name][fieldObj.name] } }
       when 'multi_option'

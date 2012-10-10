@@ -221,6 +221,4 @@ class AssetsController < ApplicationController
     redirect_to :controller => 'admin_field', :action => 'list_asset_types'
   end
 
-
-
 end

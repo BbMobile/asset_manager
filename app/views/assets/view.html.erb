@@ -11,6 +11,10 @@
   <% end %>
   <% if can_edit(@asset.asset_type_id) %>
       <%= link_to 'Edit',{:controller => 'assets', :action =>'edit', :id => @asset.id} ,:class => "btn btn-primary" %>
+
+  <% end %>
+  <% if can_destroy(@asset.asset_type_id) %>
+      <%= link_to 'Delete',{:controller => 'assets', :action =>'delete', :id => @asset.id} ,:class => "btn btn-danger" %>
   <% end %>
 </div>
 
@@ -63,5 +67,8 @@
   <% end %>
   <% if can_edit(@asset.asset_type_id) %>
       <%= link_to 'Edit',{:controller => 'assets', :action =>'edit', :id => @asset.id} ,:class => "btn btn-primary" %>
+  <% end %>
+  <% if can_destroy(@asset.asset_type_id) %>
+      <%= link_to 'Delete',{:controller => 'assets', :action =>'delete', :id => @asset.id} ,:class => "btn btn-danger" %>
   <% end %>
 </div>

@@ -102,10 +102,14 @@ module CloudVendorsHelper
   end
 
   def delete_server_vendor(asset)
+    begin
     cloud_vendor = CloudVendor.find(AssetType.find(asset.asset_type_id).vendor_creds)
     cs = CloudServers::Connection.new(:username => cloud_vendor.username, :api_key => cloud_vendor.api_key)
 
     cs.server(asset.vendor_server_id).delete!
+    rescue
+    end
+
 
   end
 

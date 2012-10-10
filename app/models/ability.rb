@@ -41,7 +41,7 @@ class Ability
           security.edit_restrictions[:groups].each do |privilegedGroups|
             privilegedGroups.each do |privilegedGroup|
               if isUserMemberOf(user,privilegedGroup)
-                can :create, Asset, :asset_type_id => security.asset_type_id.to_s
+                can :update, Asset, :asset_type_id => security.asset_type_id.to_s
               end
             end
           end
@@ -56,7 +56,7 @@ class Ability
           security.view_restrictions[:groups].each do |privilegedGroups|
             privilegedGroups.each do |privilegedGroup|
               if isUserMemberOf(user,privilegedGroup)
-                can :create, Asset, :asset_type_id => security.asset_type_id.to_s
+                can :read, Asset, :asset_type_id => security.asset_type_id.to_s
               end
             end
           end
@@ -71,7 +71,7 @@ class Ability
           security.delete_restrictions[:groups].each do |privilegedGroups|
             privilegedGroups.each do |privilegedGroup|
               if isUserMemberOf(user,privilegedGroup)
-                can :create, Asset, :asset_type_id => security.asset_type_id.to_s
+                can :destroy, Asset, :asset_type_id => security.asset_type_id.to_s
               end
             end
           end

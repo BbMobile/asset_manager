@@ -1,6 +1,6 @@
-<div class="modal hide" id="myRemoveMember" style="display: none;">
+<div class="modal hide" id="myRemoveMember<%= group.id %>" style="display: none;">
   <div class="modal-header">
-    <button class="close" data-toggle="modal" href="#myRemoveMember">×</button>
+    <button class="close" data-toggle="modal" href="#myRemoveMember<%= group.id %>">×</button>
     <h3 style="text-align: center;">Remove Members</h3>
   </div>
   <div class="modal-body" align="center">
@@ -13,10 +13,10 @@
       </table>
       <div class="modal-footer">
         <%= submit_tag "Remove" ,:class => 'btn btn-primary'%>
-        <a data-toggle="modal" href="#myRemoveMember" class="btn secondary">No</a>
+        <a data-toggle="modal" href="#myRemoveMember<%= group.id %>" class="btn secondary">No</a>
       </div>
       <%= hidden_field('group', 'group_id',:value=> group.id) %>
     </form>
   </div>
 </div>
-<a class="btn" data-toggle="modal" href="#myRemoveMember" >Remove Members</a>
+<a class="btn" data-toggle="modal" href="#myRemoveMember<%= group.id %>" >Remove Members</a>

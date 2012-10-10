@@ -68,4 +68,10 @@ class GroupController < ApplicationController
     render :template => 'group/index'
 
   end
+
+  def delete_group
+    Group.destroy(BSON::ObjectId.from_string(params[:group_id]))
+
+    redirect_to :controller => 'group', :action => 'index'
+  end
 end

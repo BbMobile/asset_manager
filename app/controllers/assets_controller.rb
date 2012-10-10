@@ -216,6 +216,8 @@ class AssetsController < ApplicationController
     # Create or update vendor assets for third party vendors
     create_update_vendor_assets(params)
 
+    sync_assets(params)
+
     redirect_to :controller => 'admin_field', :action => 'list_asset_types'
   end
 

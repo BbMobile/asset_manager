@@ -254,9 +254,10 @@ module AssetsHelper
         assets_to_delete = Array.new
 
         Asset.where(:asset_type_id =>params[:asset_type_id]).each do |asset|
-          begin cs.server(asset.vendor_server_id)
-          assets_to_delete.push(asset.id)
+          begin
+            cs.server(asset.vendor_server_id)
           rescue
+            assets_to_delete.push(asset.id)
           end
         end
 

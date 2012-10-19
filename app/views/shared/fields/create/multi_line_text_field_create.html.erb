@@ -2,7 +2,7 @@
   <label class="control-label" style="color: #ffffff;"><%= field_name %></label>
   <div class="controls">
 <% if required %>
-    <td><%=  text_area(field_name,field_name, {  :rows => 5,:class => "span10"},"data-validation" => "required") %></td>
+    <td><%=  text_area(field_name,field_name, {  :rows => 5,:class => "span10","data-validation" => "required"}) %></td>
 <% else %>
     <td><%=  text_area(field_name,field_name, {  :rows => 5,:class => "span10"}) %></td>
 <% end %>

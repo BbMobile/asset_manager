@@ -29,3 +29,7 @@ namespace :deploy do
   end
 
 end
+
+after "deploy:update_code" do
+  run "cd #{release_path} && echo \"GITHUB COMMIT HASH `git rev-parse --verify HEAD`\" "
+end

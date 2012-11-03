@@ -103,7 +103,7 @@ class AssetsController < ApplicationController
   end
 
   def delete
-    asset = Asset.find(params[:asset_id])
+    asset = Asset.find(params[:id])
 
     delete_asset(asset)
 

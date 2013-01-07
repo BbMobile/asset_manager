@@ -55,7 +55,7 @@
                       <li><%= link_to 'Edit',{ :controller => 'assets', :action => 'edit', :id => asset.id} %></li>
                   <% end %>
                   <% if can_destroy(asset.asset_type_id) %>
-                      <li><%= link_to 'Delete',{ :controller => 'assets', :action => 'delete', :asset_id => asset.id} %></li>
+                      <li><%= link_to 'Delete',{ :controller => 'assets', :action => 'delete', :id => asset.id} %></li>
                   <% end %>
 
                 </ul>

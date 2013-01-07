@@ -109,7 +109,7 @@ class AssetsController < ApplicationController
 
     @assets = Asset.all
 
-    render :template => 'assets/index'
+    redirect_to :controller => 'assets', :action => 'index'
   end
 
   def edit

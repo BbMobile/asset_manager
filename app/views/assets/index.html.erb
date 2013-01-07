@@ -23,7 +23,7 @@
           <% AssetType.each do |assetType| %>
               <% if can_view(assetType.id.to_s) %>
                   <tr>
-                    <td><a href="#"><b><%= search_asset_type_assets(assetType.id.to_s,false).total %></b> <i class="icon-large icon-list-alt"></i> <%= assetType.name %></a></td>
+                    <td><%= link_to content_tag(:b,search_asset_type_assets(assetType.id.to_s,false).total.to_s)+' <i class="icon-large icon-list-alt"></i>'.html_safe+' '+assetType.name , :controller => "assets", :action => "get_assets_from_asset_type", :asset_type_id => assetType.id %></td>
                   </tr>
               <% end %>
           <% end %>

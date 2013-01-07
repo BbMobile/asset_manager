@@ -55,7 +55,7 @@ class AssetsController < ApplicationController
 
     @asset_types = AssetType.all
 
-    search_asset_type_assets(params[:asset_type_id],true,'asset_name','asc',Integer(params[:page]))
+    @assets = search_asset_type_assets(params[:asset_type_id],true,'asset_name','asc',Integer(params[:page]))
 
     @asset_type_id = params[:asset_type_id]
 
